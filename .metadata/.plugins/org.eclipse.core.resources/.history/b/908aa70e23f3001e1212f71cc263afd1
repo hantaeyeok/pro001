@@ -1,0 +1,29 @@
+package org.md.dao;
+
+import java.sql.DriverManager;
+
+import org.mariadb.jdbc.Connection;
+
+public class OracleDB {
+	final static String DRIVER = "oracle.jdbc.OracleDriver";
+	final static String URL = "jdbc:oracle:thin:@localhost:1521:xe"; 
+	final static String USERID = "system";
+	final static String USERPW = "1234";
+	
+	Connection con = null;
+	
+	public Connection connect() {
+		
+		try {
+			Class.forName(DRIVER);
+			con = DriverManager.getConnection(URL,USERID,USERPW);
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return ;
+	}
+}

@@ -9,6 +9,8 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list> -->
+  
+<!--  web.xml 로 서버 실행시 메인페이지를 org.md.ctrl.Main의 주소로 변경하는 구문 -->
   <servlet>
   	<servlet-name>pro001</servlet-name>
   	<servlet-class>org.md.ctrl.Main</servlet-class>
@@ -17,5 +19,33 @@
   	<servlet-name>pro001</servlet-name>
   	<url-pattern>/</url-pattern>
   </servlet-mapping>
-  
+<!--  WEB-INF 안의 경우 보완때문에 아래 것들을 뚫어주어야함. -->
+   <servlet-mapping>
+  	<servlet-name>default</servlet-name>
+  	<url-pattern>*.js</url-pattern>
+  	<url-pattern>*.css</url-pattern>
+  	<url-pattern>*.jpg</url-pattern>
+  	<url-pattern>*.png</url-pattern>
+  	<url-pattern>*.gif</url-pattern>
+  	<url-pattern>*.webp</url-pattern>
+  	<url-pattern>*.mp4</url-pattern>
+  	<url-pattern>*.ogv</url-pattern>
+  	<url-pattern>*.webm</url-pattern>
+  	<url-pattern>*.mp3</url-pattern>
+  	<url-pattern>*.wav</url-pattern>
+  	<url-pattern>*.ogg</url-pattern>
+  </servlet-mapping>
+  <!--  UTF-8 encoding filter 설정! -->
+    <filter>
+  	<filter-name>SetCharEncoding</filter-name>
+  	<filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>
+  	<init-param>
+  		<param-name>encoding</param-name> 
+  		<param-value>utf-8</param-value>
+  	</init-param>
+  </filter>
+  <filter-mapping>
+  	<filter-name>SetCharEncoding</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
 </web-app>
