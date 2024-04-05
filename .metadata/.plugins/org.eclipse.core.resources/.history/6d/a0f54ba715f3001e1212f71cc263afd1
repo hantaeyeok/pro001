@@ -1,0 +1,7 @@
+package org.md.dao;
+
+public class Main {
+//Controller 사용자 요청을 어떻게 처리할지 결정하는 파트이며,
+//Main class 만든 이유 : main페이지의 사용자 요청을 처리할 클래스 ctrl을 만듬
+	
+}
