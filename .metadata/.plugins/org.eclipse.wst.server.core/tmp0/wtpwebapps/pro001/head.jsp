@@ -2,8 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<c:set var="hpath" value="<%=request.getContextPath() %>"></c:set>
-<script src="${hpath }/js/jquery-3.2.1.min.js"></script>
-<link rel="stylesheet" href="${hpath }/css/bootstrap.min.css" />
+<c:set var="ipath" value="<%=request.getContextPath() %>" />    
+<!-- js, css, 부트스트랩 넣은 거 -->
+<script src="${ipath }/js/jquery-3.2.1.min.js"></script>
+<link rel="stylesheet" href="${ipath }/css/bootstrap.min.css" />
 <script src="${ipath }/js/bootstrap.min.js"></script>
 

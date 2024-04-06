@@ -35,7 +35,7 @@ public class NoticeListCtrl extends HttpServlet {
 		//controller -> dao
 		//dao-> controller
 		List<Notice> notiList = new ArrayList<>();
-		notiList = dao.getNoticeDAO();
+		notiList = dao.getNoticeList();
 		request.setAttribute("notiList", notiList);	
 		//notiList를 jsp페이지에 넘겨주기위한 구문 
 		//jsp 에서 getParameter()로 받아준다.

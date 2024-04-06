@@ -38,6 +38,7 @@ public class Main extends HttpServlet {
 			// 루트 디렉토리에 대한 실제 파일 시스템 경로 지정
 			// request.getSession() : 클라이언트와 서버간의 데이터 공유를 위해 사용
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/index.jsp");
+			//index.jsp 전달하기 위한 구문 서블릿이나 jsp 반환 및 전달하는 인터페이스
 		view.forward(request, response);
 	}
 

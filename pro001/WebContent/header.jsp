@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>     
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
+<c:set var="hpath" value="<%=request.getContextPath() %>" />   
 <!-- head의 경로 변수로 설정 다른페이지에서 hpath로 상대경로 구성 가능, 위치 동적으로 변환-->
-<c:set var="headerpath" value="<%= request.getContextPath() %>>" ></c:set>
 <header>
 <!-- 로고 이미지를 클릭하면 메인페이지로 돌아가는 방식 , a태그 hrep 는 url을 사용하여 이동시킴 -->
 	<div class="logo_wrap">
-		<a href="/pro001"><img src="${headerpath }/images/logo.png" alt="명동 로고" /></a>
+		<a href="/pro001"><img src="${hpath }/images/logo.png" alt="명동 로고" /></a>
 	</div>
 	<!-- tnb : 로그인, 회원가입, 로그아웃 메뉴 포함 Top Navigation Bar -->
 	<nav id="tnb">
@@ -34,7 +34,7 @@
 		<ul class="main_menu">
 			<li><a href="">커뮤니티</a>
 				<ul>
-					<li><a href="${headerpath }/NotiList.do">공지사항</a></li>
+					<li><a href="${hpath }/NotiList.do">공지사항</a></li>
 					<li><a href="">자료실</a></li>
 					<li><a href="">묻고답하기</a></li>
 				</ul>

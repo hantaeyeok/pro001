@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<!-- index의 경로 변수로 설정 다른페이지에서 hpath로 상대경로 구성 가능, 위치 동적으로 변환-->
-<c:set var="ipath" value="<%=request.getContextPath() %>"></c:set>
+<!-- index의 경로 변수로 설정 다른페이지에서 path0로 상대경로 구성 가능, 위치 동적으로 변환-->
+<c:set var="path0" value="<%=request.getContextPath() %>" />  
 
 <!DOCTYPE html>
 <html>

@@ -16,7 +16,8 @@ public class NoticeDAO {
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	
-	public List<Notice> getNoticeDAO(){
+	//1번 select sql select * from notice order by resdate desc
+	public List<Notice> getNoticeList(){
 		List<Notice> notiList = new ArrayList<>();
 		OracleDB oracle = new OracleDB();
 		
@@ -40,4 +41,94 @@ public class NoticeDAO {
 		}
 		return notiList;
 	}
+	
+	//2번 select * from notice where no=?
+	//메서드는 특정 공지사항 번호를 입력받아 그에 해당하는 공지사항 정보를 반환
+//	public Notice getNotice(int no) {	//getNotice(번호)로 그 번호의 테이터를 호출
+//		Notice noti = new Notice();
+//		OracleDB oracle = new OracleDB();
+//		
+//		try {
+//			pstmt = con.prepareStatement(oracle.SELECT_NOTICE_BYNO);	//
+//			pstmt.setInt(1, no);	//첫번째 매개변수 ? 에 공지사항 no 설정
+//			rs = pstmt.executeQuery();
+//			if(rs.next()) {
+//				noti.setNo(rs.getInt("no"));
+//				noti.setTitle(rs.getString("title"));
+//				noti.setContent(rs.getString("content"));
+//				noti.setResdate(rs.getString("resdate"));
+//				noti.setVisited(rs.getInt("visited"));
+//			}
+//		} catch(Exception e){
+//			e.printStackTrace();
+//		} finally {
+//			oracle.close(con, pstmt, rs);
+//		}
+//		return noti;
+//	}
+	//방문자 추가하기
+	
+	public Notice getNotice(int no) {	//getNotice(번호)로 그 번호의 테이터를 호출
+		Notice noti = new Notice();
+		OracleDB oracle = new OracleDB();
+		
+		try {
+			con = oracle.connect();
+			pstmt = con.prepareStatement(SqlLang.VISITED_UPD_NOTICE);
+			pstmt.setInt(1, no);
+			pstmt.executeUpdate();
+			pstmt = null;
+			pstmt = con.prepareStatement(oracle.SELECT_NOTICE_BYNO);
+			pstmt.setInt(1, no);	//첫번째 매개변수 ? 에 공지사항 no 설정
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				noti.setNo(rs.getInt("no"));
+				noti.setTitle(rs.getString("title"));
+				noti.setContent(rs.getString("content"));
+				noti.setResdate(rs.getString("resdate"));
+				noti.setVisited(rs.getInt("visited"));
+			}
+		} catch(Exception e){
+			e.printStackTrace();
+		} finally {
+			oracle.close(con, pstmt, rs);
+		}
+		return noti;
+	}
+	
+	//3번 insert into notice values (nseq.nextval, ?, ?, sysdate, 0)
+	// 데이터베이스에 공지사항을 삽입한 후에 성곡적으로 이루어졌는지 int로 알려주기 위함 성공시 1 반환 실팻히 0 반환
+	public int insNotice(Notice noti) {
+		int cnt =0 ;
+		OracleDB oracle = new OracleDB();
+		try {
+			con = oracle.connect();
+			pstmt = con.prepareStatement(oracle.INS_NOTICE);
+			//sql 문 ? ? 순서를 사용하기 위해 setString 사용
+			pstmt.setString(1, noti.getTitle());
+			pstmt.setString(2, noti.getContent());
+			cnt = pstmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			oracle.close(con, pstmt);
+		}
+		return cnt;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
