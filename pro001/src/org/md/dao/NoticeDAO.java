@@ -68,16 +68,30 @@ public class NoticeDAO {
 //	}
 	//방문자 추가하기
 	
+	public void updateVisited(int no) {
+		Notice noti = new Notice();
+	    OracleDB oracle = new OracleDB();
+	    try {
+	        con = oracle.connect();
+	        pstmt = con.prepareStatement(SqlLang.VISITED_UPD_NOTICE);
+	        pstmt.setInt(1, no);
+	        pstmt.executeUpdate();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    } finally {
+	        oracle.close(con, pstmt);
+	    }
+	   
+	}
+		
+		
+	
 	public Notice getNotice(int no) {	//getNotice(번호)로 그 번호의 테이터를 호출
 		Notice noti = new Notice();
 		OracleDB oracle = new OracleDB();
 		
 		try {
 			con = oracle.connect();
-			pstmt = con.prepareStatement(SqlLang.VISITED_UPD_NOTICE);
-			pstmt.setInt(1, no);
-			pstmt.executeUpdate();
-			pstmt = null;
 			pstmt = con.prepareStatement(oracle.SELECT_NOTICE_BYNO);
 			pstmt.setInt(1, no);	//첫번째 매개변수 ? 에 공지사항 no 설정
 			rs = pstmt.executeQuery();
@@ -116,10 +130,68 @@ public class NoticeDAO {
 		return cnt;
 	}
 	
+	//글 수정은 수정한 내용을 받아서 그 내용을 editpro로 변환 이 부분은 추가랑 같음.
+	public Notice getNotice2(int no) {	//getNotice(번호)로 그 번호의 테이터를 호출
+		Notice noti = new Notice();
+		OracleDB oracle = new OracleDB();
+		
+		try {
+			pstmt = con.prepareStatement(oracle.SELECT_NOTICE_BYNO);	//
+			pstmt.setInt(1, no);	//첫번째 매개변수 ? 에 공지사항 no 설정
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+			noti.setNo(rs.getInt("no"));
+				noti.setTitle(rs.getString("title"));
+				noti.setContent(rs.getString("content"));
+				noti.setResdate(rs.getString("resdate"));
+				noti.setVisited(rs.getInt("visited"));
+			}
+		} catch(Exception e){
+			e.printStackTrace();
+		} finally {
+			oracle.close(con, pstmt, rs);
+		}
+		return noti;
+	}
 	
 	
+	public int editProNotice(Notice noti) {
+		int cnt = 0;
+		OracleDB oracle = new OracleDB();
+		try {
+			con = oracle.connect();
+			pstmt = con.prepareStatement(SqlLang.UPD_NOTICE);
+			pstmt.setString(1, noti.getTitle());
+			pstmt.setString(2, noti.getContent());
+			pstmt.setInt(3, noti.getNo());
+			cnt = pstmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+			
+		}finally {
+			oracle.close(con, pstmt);
+		}
+		return cnt;
+	}
 	
 	
+	public int delNotice(int no) {
+		int cnt = 0;
+		OracleDB oracle = new OracleDB();
+		try {
+			con = oracle.connect();
+			pstmt = con.prepareStatement(SqlLang.DEL_NOTICE);
+			pstmt.setInt(1, no);
+			cnt = pstmt.executeUpdate();
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+			
+		}finally {
+			oracle.close(con, pstmt);
+		}
+		return cnt;
+	}
 	
 	
 	
