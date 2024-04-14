@@ -2,7 +2,7 @@ package org.md.dto;
 
 public class Qna {
 	private int no;
-	private String plevel;
+	private int plevel;
 	private int parno;
 	private String title; 
 	private String content;
@@ -11,8 +11,7 @@ public class Qna {
 	private String aid;
 	
 	public Qna() {}
-	public Qna(int no, String plevel, int parno, String title, String content, String resdate, int visited,
-			String aid) {
+	public Qna(int no, int plevel, int parno, String title, String content, String resdate, int visited, String aid) {
 		super();
 		this.no = no;
 		this.plevel = plevel;
@@ -29,10 +28,10 @@ public class Qna {
 	public void setNo(int no) {
 		this.no = no;
 	}
-	public String getPlevel() {
+	public int getPlevel() {
 		return plevel;
 	}
-	public void setPlevel(String plevel) {
+	public void setPlevel(int plevel) {
 		this.plevel = plevel;
 	}
 	public int getParno() {
@@ -76,6 +75,6 @@ public class Qna {
 		return "Qna [no=" + no + ", plevel=" + plevel + ", parno=" + parno + ", title=" + title + ", content=" + content
 				+ ", resdate=" + resdate + ", visited=" + visited + ", aid=" + aid + "]";
 	}
-	
+
 	
 }

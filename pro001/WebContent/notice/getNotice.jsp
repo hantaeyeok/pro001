@@ -3,18 +3,22 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <c:set var="path0" value="<%=request.getContextPath() %>" />    
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<title>${title }</title>
 <%@ include file="/head.jsp" %>
-<style >
+<style>
+.container { width:1400px; }
 .page { clear:both; height:100vh; }
 #page1 { background-color:#ececec; }
-<title>Insert title here</title>
+#page2 { background-color:#42bcf5; }
+.page_title { font-size:36px; padding-top:2em; text-align:center; }
+th.item1 { width:8%; }
+th.item2 { width:60%; }
+th.item3 { width:20%; }
 </style>
-
 </head>
 <body>
 <div id="header">
@@ -22,8 +26,8 @@
 </div>
 <div id="contents">
 	<section class="page" id="page1">
-		<div>
-			<h3>공지사항 상세보기</h3>
+		<div style="width:1400px; margin:0 auto;">
+			<h3 class="page_title">공지사항 상세보기</h3>
 			<div>
 				<table class="table">
 					<tbody>
@@ -48,21 +52,22 @@
 							<td>${noti.visited }</td>
 						</tr>
 					</tbody>
-					<!-- 공지사항 글등록, 수정,삭제,목록, 버튼으로 이동할꺼임 -->
 				</table>
 				<hr>
 				<div class="btn-group">
+				  <c:if test="${sid.equals('admin') }">
 				  <a href="${path0 }/notice/noti_ins.jsp" class="btn btn-secondary">글 등록</a>
 				  <a href="${path0 }/EditNotice.do?no=${noti.no }" class="btn btn-secondary">글 수정</a>
 				  <a href="${path0 }/DelNotice.do?no=${noti.no }" class="btn btn-secondary">글 삭제</a>
+				  </c:if>
 				  <a href="${path0 }/NotiList.do" class="btn btn-secondary">글 목록</a>
 				</div>
 			</div>
 		</div>
 	</section>
 	<section class="page" id="page2">
-		<div>	
-			<h3></h3>
+		<div style="width:1400px; margin:0 auto;">	
+			<h3 class="page_title"></h3>
 
 		</div>	
 	</section>	

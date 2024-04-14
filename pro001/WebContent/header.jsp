@@ -10,36 +10,54 @@
 		<a href="/pro001"><img src="${hpath }/images/logo.png" alt="명동 로고" /></a>
 	</div>
 	<!-- tnb : 로그인, 회원가입, 로그아웃 메뉴 포함 Top Navigation Bar -->
-	<nav id="tnb">
-		<ul>
-			<c:if test="${empty sid }">
-			<li><a href="${hpath }/member/">로그인</a></li>
-			<li><a href="${hpath }/member/">회원가입</a></li>
-			</c:if>
-			<c:if test="${not empty sid }">
-			<li><a href="${hpath }/member/">로그아웃</a></li>
-			<li><a href="${hpath }/member/">회원정보</a></li>
-			</c:if>
-			<c:if test="${sid.equals('admin') }">
-			<li><a href="${hpath }/admin/">관리자로</a></li>
-			</c:if>
-		</ul>
-	</nav>
-	<!-- 소메뉴 -->
-	<!-- gnb : 주메뉴 서브메뉴 Global Navigation Bar -->
-	<!-- ${hpath}/NotiList.do는 현재 웹 애플리케이션의 컨텍스트 경로에 
-	/NotiList.do를 추가하여 공지사항 페이지의 전체 경로 구성 
-	사용자가 해당 링크를 클릭하면 공지사항 페이지로 이동 -->
 	<nav id="gnb">
-		<ul class="main_menu">
-			<li><a href="">커뮤니티</a>
-				<ul>
+	<!-- gnb  -->
+		<ul class="">
+			<li class="item" >
+				<a href="" class="dp1">마이페이지</a>
+				<ul class="sub_menu">
+					<c:if test="${empty sid }">
+					<li><a href="${hpath }/member/login.jsp">로그인</a></li>
+					<li><a href="${hpath }/member/term.jsp">회원가입</a></li>
+					</c:if>
+					<c:if test="${not empty sid }">
+					<li><a href="${hpath }/LogOut.do">로그아웃</a></li>
+					<li><a href="${hpath }/EditMember.do?id=${sid }">회원정보</a></li>
+					</c:if>
+					<c:if test="${sid.equals('admin') }">
+					<li><a href="${hpath }/AdminMain.do">관리자로</a></li>
+					</c:if>
+					<li><a href="${hpath }/member/terms.jsp">회원약관</a></li>
+					<li><a href="${hpath }/member/policy.jsp">개인정보처리방침</a></li>
+				</ul>
+			</li>
+			<li class="item" >
+				<a href="" class="dp1">지역소개</a>
+				<ul class="sub_menu">
+					<li><a href="${hpath }/intro/origin.jsp">지명유래</a></li>
+					<li><a href="${hpath }/intro/facility.jsp">지역 특징 및 시설안내</a></li>
+					<li><a href="${hpath }/intro/history.jsp">연혁</a></li>
+					<li><a href="${hpath }/intro/map.jsp">오시는 길</a></li>
+				</ul>
+			</li>
+			<li class="item" >
+				<a href="" class="dp1">이용안내</a>
+				<ul class="sub_menu">
+					<li><a href="${hpath }/GetTrafficList.do">교통편 안내</a></li>
+					<li><a href="${hpath }/tour/tour.jsp">관광 안내</a></li>
+					<li><a href="${hpath }/tour/rest.jsp">맛집 안내</a></li>
+					<li><a href="${hpath }/tour/lodg.jsp">숙박 시설 안내</a></li>
+				</ul>
+			</li>
+			<li class="item" >
+				<a href="" class="dp1">커뮤니티</a>
+				<ul class="sub_menu">
 					<li><a href="${hpath }/NotiList.do">공지사항</a></li>
-					<li><a href="">자료실</a></li>
-					<li><a href="">묻고답하기</a></li>
+					<li><a href="${hpath }/ArchiveList.do">자료실</a></li>
+					<li><a href="${hpath }/GetQnaList.do">묻고답하기</a></li>
 				</ul>
 			</li>
 		</ul>
 	</nav>
-</header>
+</header> 
 <hr>
