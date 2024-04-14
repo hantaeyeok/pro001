@@ -2,12 +2,21 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
+<<<<<<< HEAD
 <c:set var="path0" value="<%=request.getContextPath() %>" />    
+=======
+<c:set var="path0" value="<%=request.getContextPath() %>" />   
+
+>>>>>>> 8bde16b449ad23f91d79e36f625bc2a73257819a
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<<<<<<< HEAD
 <title>${title }</title>
+=======
+<title>Insert title here</title>
+>>>>>>> 8bde16b449ad23f91d79e36f625bc2a73257819a
 <%@ include file="/head.jsp" %>
 <style>
 .container { width:1400px; }
@@ -19,12 +28,22 @@
 </head>
 <body>
 <div id="header">
+<<<<<<< HEAD
 	<%@ include file="/header.jsp" %>
 </div>
+=======
+
+</div>
+<!--  공지사항 글 수정 폼 만들기 ! -->
+>>>>>>> 8bde16b449ad23f91d79e36f625bc2a73257819a
 <div id="contents">
 	<section class="page" id="page1">
 		<div style="width:1400px; margin:0 auto;">
 			<h3 class="page_title">공지사항 글 수정</h3>
+<<<<<<< HEAD
+=======
+			<!-- 현재 페이지에서 데이터를 전달하기때문에 dopost -->
+>>>>>>> 8bde16b449ad23f91d79e36f625bc2a73257819a
 			<form action="${path0 }/EditProNotice.do" method="post">
 				<table class="table">
 					<tbody>
@@ -70,6 +89,10 @@
 		</div>
 	</section>	
 </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8bde16b449ad23f91d79e36f625bc2a73257819a
 <div id="footer">
 	<%@ include file="/footer.jsp" %>
 </div>

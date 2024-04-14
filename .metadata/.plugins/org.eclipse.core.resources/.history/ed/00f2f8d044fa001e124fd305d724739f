@@ -42,7 +42,9 @@ public class GetNoticeCtrl extends HttpServlet {
 		
 		int no = Integer.parseInt(request.getParameter("no"));
 		NoticeDAO dao = new NoticeDAO();
+		dao.updateVisited(no);
 		Notice noti = dao.getNotice(no);
+		
 		
 		request.setAttribute("noti", noti); //공지사항 정보를 jsp 전달하기 위해 
 		RequestDispatcher view = request.getRequestDispatcher("/notice/getNotice.jsp");	//공지사항 상세보기 jsp로 이동
